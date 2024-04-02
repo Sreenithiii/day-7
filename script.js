@@ -51,7 +51,7 @@ request3.send();
 request3.onload = function() {
     const data = JSON.parse(request3.response);
     const totalPopulation = data.reduce((total, country) => total + country.population, 0);
-    console.log("Total population of all countries:", totalPopulation);
+    console.log (totalPopulation);
 };
 //Print the country that uses US dollars as currency.
 
@@ -59,12 +59,7 @@ const request4 = new XMLHttpRequest();
 request4.open("GET", "https://restcountries.com/v3.1/all", true);
 request4.send();
 request4.onload = function() {
-    const data = JSON.parse(request4.response);
-    const countriesWithUSD = data.filter(country => {
-        return country.currencies && country.currencies.hasOwnProperty("USD");
-    });
-    console.log("Countries that use US dollars as currency:");
-    countriesWithUSD.forEach(country => {
-        console.log(country.name.common);
-    });
+    const data = JSON.parse(request4.responseText);
+    const countriesWithUSD = data.filter(country => country.currencies && country.currencies.hasOwnProperty("USD"));
+    console.log(countriesWithUSD.map(country => country.name.common));
 };
