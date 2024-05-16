@@ -23,7 +23,7 @@ request1.onload = function() {
         name: country.name.common,
         population: country.population
     }));
-    console.log(countries);
+    countries.forEach(country => console.log(country.name));
 };
 
 //Print the following details Name, capital, flag, using forEach function
